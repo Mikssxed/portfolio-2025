@@ -126,7 +126,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="inline-block mb-4 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm font-medium"
         >
-          Frontend Developer & UI/UX Designer
+          Frontend Developer & Future Fullstack
         </motion.div>
 
         <motion.h1
@@ -137,8 +137,8 @@ export default function Hero() {
         >
           <span className="inline-block">
             Hi, I'm{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#E31C79] via-[#7928CA] to-[#4C1D95] relative">
-              John Doe
+            <span className="bg-clip-text block text-transparent bg-gradient-to-r from-[#E31C79] via-[#7928CA] to-[#4C1D95] relative">
+              Wojtek Masłowski
               <motion.span
                 className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#E31C79] via-[#7928CA] to-[#4C1D95]"
                 initial={{ scaleX: 0 }}

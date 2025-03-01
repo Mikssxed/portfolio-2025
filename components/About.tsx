@@ -21,10 +21,8 @@ export default function About() {
       ref={containerRef}
       className="py-20 md:py-32 px-4 relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#E31C79]/5 via-[#7928CA]/5 to-[#4C1D95]/5" />
-
       {/* Animated background elements */}
-      <motion.div className="absolute inset-0" style={{ y, opacity }}>
+      <motion.div className="absolute inset-0 " style={{ y, opacity }}>
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
@@ -46,7 +44,7 @@ export default function About() {
         ))}
       </motion.div>
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,8 +62,8 @@ export default function About() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/placeholder.svg?height=600&width=600"
-                  alt="John Doe"
+                  src="/photo.jpg"
+                  alt="wojtek maslowski"
                   fill
                   className="object-cover"
                 />
@@ -78,15 +76,16 @@ export default function About() {
               About Me
             </h2>
             <p className="text-lg text-white/80 mb-6">
-              I'm a passionate frontend developer with 5+ years of experience
-              creating beautiful, responsive, and user-friendly web
-              applications. I specialize in modern JavaScript frameworks and
-              have a keen eye for design and user experience.
+              I'm a passionate frontend developer with 2+ years of experience
+              creating beautiful, responsive, and user-friendly web applications
+              with Next.js, React Native, and TypeScript. I thrive in fast-paced
+              environments, collaborating daily with clients, designers, PMs,
+              and QA teams in English. Currently, I’m expanding my skill set
+              with Node.js and SQL to transition into a full-stack role.
             </p>
             <p className="text-lg text-white/80 mb-8">
-              When I'm not coding, you can find me exploring new technologies,
-              contributing to open-source projects, or sharing my knowledge
-              through blog posts and community events.
+              When I'm not coding, I enjoy indoor climbing, gaming, and
+              exploring new technologies.
             </p>
 
             <div className="flex gap-4">
@@ -97,7 +96,7 @@ export default function About() {
                 className="bg-white/5 hover:bg-white/10 transition-colors duration-300"
               >
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Mikssxed"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
@@ -112,7 +111,7 @@ export default function About() {
                 className="bg-white/5 hover:bg-white/10 transition-colors duration-300"
               >
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/wojciech-maslowski-wm/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -126,7 +125,10 @@ export default function About() {
                 asChild
                 className="bg-white/5 hover:bg-white/10 transition-colors duration-300"
               >
-                <a href="mailto:contact@example.com" aria-label="Email">
+                <a
+                  href="mailto:wojtek.maslowski00@gmail.com"
+                  aria-label="Email"
+                >
                   <Mail className="h-5 w-5" />
                 </a>
               </Button>

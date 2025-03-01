@@ -9,7 +9,17 @@ const skillCategories = [
   {
     icon: <Code className="h-10 w-10 text-[#E31C79]" />,
     title: "Frontend Development",
-    skills: ["React", "Next.js", "Vue", "TypeScript", "JavaScript"],
+    skills: [
+      "React",
+      "Next.js",
+      "React Native",
+      "TypeScript",
+      "JavaScript",
+      "Zustand",
+      "Redux",
+      "Tanstack Query",
+      "Detox",
+    ],
   },
   {
     icon: <Layers className="h-10 w-10 text-[#7928CA]" />,
@@ -19,18 +29,37 @@ const skillCategories = [
       "Tailwind CSS",
       "Framer Motion",
       "CSS/SCSS",
+      "Material-UI",
+      "LESS",
+      "Ant Design",
       "Responsive Design",
     ],
   },
   {
     icon: <Database className="h-10 w-10 text-[#4C1D95]" />,
     title: "Backend Integration",
-    skills: ["RESTful APIs", "GraphQL", "Node.js", "Firebase", "Supabase"],
+    skills: [
+      "RESTful APIs",
+      "Supabase",
+      "Postman",
+      "Node.js - learning",
+      "SQL - learning",
+    ],
   },
   {
     icon: <PenTool className="h-10 w-10 text-[#E31C79]" />,
     title: "Tools & Others",
-    skills: ["Git", "Webpack", "Jest", "Storybook", "CI/CD"],
+    skills: [
+      "Git",
+      "Webpack",
+      "Jest",
+      "Storybook",
+      "Docker",
+      "SEO",
+      "Expo/EAS",
+      "Agile-Scrum",
+      "Vercel",
+    ],
   },
 ];
 
@@ -103,7 +132,7 @@ export default function Skills() {
               whileHover={{ y: -5, scale: 1.03 }}
             >
               <Card className="h-full bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 group">
-                <CardContent className="pt-6 relative overflow-hidden">
+                <CardContent className="pt-6 relative overflow-hidden h-full">
                   <div className="text-center mb-4 relative z-10">
                     <motion.div
                       initial={{ scale: 0.5, opacity: 0 }}
@@ -127,7 +156,7 @@ export default function Skills() {
                       </Badge>
                     ))}
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#E31C79]/10 to-[#4C1D95]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#E31C79]/10 to-[#4C1D95]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-full" />
                 </CardContent>
               </Card>
             </motion.div>

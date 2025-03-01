@@ -2,6 +2,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
@@ -9,36 +10,40 @@ import { useRef } from "react";
 
 const projects = [
   {
-    title: "E-commerce Platform",
+    title: "Shoe shop",
     description:
-      "A modern e-commerce platform built with Next.js and Tailwind CSS, featuring product filtering, cart functionality, and payment integration.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["Next.js", "Tailwind CSS", "Stripe", "Vercel"],
-    link: "#",
+      "A modern shoe shop built with Next.js and Tailwind CSS, featuring product filtering, cart functionality, authentiaction and payment integration.",
+    image: "/shoe-shop.png",
+    tags: ["Next.js", "Tailwind CSS", "Stripe", "Vercel", "Next Auth"],
+    demoLink: "https://shoes-shop-t1.vercel.app/",
+    codeLink: "https://github.com/Mikssxed/shoe-shop",
+    position: "left",
   },
   {
-    title: "Dashboard UI",
+    title: "AI Summarizer",
     description:
-      "A responsive admin dashboard with dark mode, data visualization, and real-time updates using React and D3.js.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["React", "D3.js", "TypeScript", "Firebase"],
-    link: "#",
+      "Summarize articles with this AI-powered text summarizer built with React and the OpenAI API.",
+    image: "/ai-summ.png",
+    tags: ["React", "Redux", "JavaScript", "RapidAPI"],
+    demoLink: "https://ai-summarizer-wm.netlify.app/",
+    codeLink: "https://github.com/Mikssxed/ai-summarizer",
   },
   {
-    title: "Travel App",
+    title: "Minecraft Web",
     description:
-      "A travel planning application with interactive maps, itinerary builder, and social sharing features.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["Vue.js", "Mapbox", "Node.js", "MongoDB"],
-    link: "#",
+      "Very basic minecraft created with Three.js and React. You can move around and build blocks.",
+    image: "/minecraft.png",
+    tags: ["React", "Three.js", "JavaScript", "Vite"],
+    demoLink: "https://minecrafttestwmwm.netlify.app/",
+    codeLink: "https://github.com/Mikssxed/minecraft-success",
   },
   {
-    title: "Portfolio Template",
+    title: "Self Grind [IN PROGRESS]",
     description:
-      "A customizable portfolio template for developers and designers with smooth animations and responsive design.",
-    image: "/placeholder.svg?height=600&width=800",
-    tags: ["React", "Framer Motion", "GSAP", "Netlify"],
-    link: "#",
+      "Self development app that helps you to track your progress and set goals. While you are doing your tasks you can earn stats for your character.",
+    image: "/self-grind.png",
+    tags: ["Next.js", "Tailwind CSS", "Supabase", "Vercel"],
+    demoLink: "https://self-grind.vercel.app",
   },
 ];
 
@@ -118,7 +123,10 @@ export default function Projects() {
                     alt={project.title}
                     width={800}
                     height={600}
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={cn(
+                      "object-cover object-center transition-transform duration-500 group-hover:scale-105 h-full",
+                      project.position === "left" && "object-left"
+                    )}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
@@ -140,20 +148,39 @@ export default function Projects() {
                       </Badge>
                     ))}
                   </div>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full bg-white/5 hover:bg-white/10 transition-colors duration-300"
-                    asChild
-                  >
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  <div className="flex gap-2 w-full">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex-1 bg-white/5 hover:bg-white/10 transition-colors duration-300"
+                      asChild
                     >
-                      View Project <ExternalLink className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
+                      <a
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Live Demo <ExternalLink className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className={cn(
+                        "flex-1 bg-white/5 hover:bg-white/10 transition-colors duration-300",
+                        !project.codeLink && "opacity-50 cursor-not-allowed"
+                      )}
+                      asChild
+                    >
+                      <a
+                        href={project.codeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Code <Github className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -166,7 +193,7 @@ export default function Projects() {
             className="bg-gradient-to-r from-[#E31C79] to-[#7928CA] hover:from-[#D31C79] hover:to-[#6928CA] text-white transition-all duration-300"
           >
             <a
-              href="https://github.com"
+              href="https://github.com/Mikssxed?tab=repositories"
               target="_blank"
               rel="noopener noreferrer"
             >

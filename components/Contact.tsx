@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import emailjs from "@emailjs/browser";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -21,18 +22,49 @@ const formSchema = z.object({
     .min(10, { message: "Message must be at least 10 characters." }),
 });
 
+type FormValues = z.infer<typeof formSchema>;
+
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+    reset,
+  } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // Here you would typically send the data to your server or a third-party service
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccess(false);
+
+    try {
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: data.name,
+          to_name: "Wojtek",
+          from_email: data.email,
+          to_email: "wojtek.maslowski00@gmail.com",
+          message: data.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log("Email sent successfully:", result.text);
+      setSubmitSuccess(true);
+      reset();
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      setSubmitError("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerRef = useRef(null);
@@ -187,10 +219,20 @@ export default function Contact() {
                 </div>
                 <Button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full bg-gradient-to-r from-[#E31C79] to-[#7928CA] hover:from-[#D31C79] hover:to-[#6928CA] text-white transition-all duration-300"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
+
+                {submitSuccess && (
+                  <p className="mt-2 text-green-400 text-center">
+                    Your message has been sent successfully!
+                  </p>
+                )}
+                {submitError && (
+                  <p className="mt-2 text-red-500 text-center">{submitError}</p>
+                )}
               </form>
             </CardContent>
           </Card>
@@ -212,7 +254,7 @@ export default function Contact() {
               className="bg-white/5 hover:bg-white/10 transition-colors duration-300"
             >
               <a
-                href="https://github.com"
+                href="https://github.com/Mikssxed"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -227,7 +269,7 @@ export default function Contact() {
               className="bg-white/5 hover:bg-white/10 transition-colors duration-300"
             >
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/wojciech-maslowski-wm/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -241,7 +283,7 @@ export default function Contact() {
               asChild
               className="bg-white/5 hover:bg-white/10 transition-colors duration-300"
             >
-              <a href="mailto:contact@example.com" aria-label="Email">
+              <a href="mailto:wojtek.maslowski00@gmail.com" aria-label="Email">
                 <Mail className="h-5 w-5" />
               </a>
             </Button>

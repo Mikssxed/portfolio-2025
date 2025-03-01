@@ -54,10 +54,10 @@ export default function Portfolio() {
       <footer className="py-8 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <p className="text-muted-foreground">
-            © {new Date().getFullYear()} John Doe. All rights reserved.
+            © {new Date().getFullYear()} Wojtek Masłowski. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground mt-2">
-            Designed and built with ❤️ using Next.js and Tailwind CSS
+            Built with ❤️ using Next.js and Tailwind CSS
           </p>
         </div>
       </footer>
