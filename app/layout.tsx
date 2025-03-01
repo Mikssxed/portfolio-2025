@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Wojtek Maslowski | Frontend Developer",
   description:
     "Portfolio of Wojtek Maslowski, a frontend developer specializing in React, Next.js, and modern web technologies.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -18,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
